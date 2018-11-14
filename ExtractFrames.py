@@ -20,10 +20,15 @@ if not os.path.exists(outputDir):
 success,image = vidcap.read()
 
 print("Reading frame {} {} ".format(count, success))
-while success:
 
+def extractFrame(): 
+# while success:
+  global count, image, success
   # write the current frame out as a jpeg image
   cv2.imwrite("{}/frame_{:04d}.jpg".format(outputDir, count), image)   
   success,image = vidcap.read()
-  print('Reading frame {}'.format(count))
+  print('Reading frame {} {}'.format(count, success))
   count += 1
+
+
+
