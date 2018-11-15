@@ -21,7 +21,10 @@ coloredFrameBuffer = queue.Queue(maxsize=10) # Extracted Frames
 grayscaleFrameBuffer = queue.Queue(maxsize=10) # Grayscale Frames
 
 def extractFrames():
-    global image
+    # global image
+    vidcap = cv2.VideoCapture('clip.mp4')
+    success,image = vidcap.read()
+
     print("Starting to extract frames")
     
     print("Reading frame {} {} ".format(count, success))
@@ -36,6 +39,9 @@ def extractFrames():
         jpgAsText = base64.b64encode(jpgImage) 
         coloredFrameBuffer.put(jpgAsText)
         # extractFrame()
+        success,image = vidcap.read()# get next frame
+
+
         print("T1. releasing semColoredMutex")
         semColoredMutex.release()
         print("T1. releasing semColoredFull")
@@ -119,7 +125,8 @@ def displayImages():
         jpgRawImage = base64.b64decode(frameAsText)
         # convert the raw frame to a numpy array
         jpgImage = np.asarray(bytearray(jpgRawImage), dtype=np.uint8)
-        img = cv2.imdecode( jpgImage ,cv2.IMREAD_UNCHANGED) # this is what is used in DisplayFtames
+        img = cv2.imdecode( jpgImage ,cv2.IMREAD_UNCHANGED) # this is what is used in DisplayFrames
+        print("Displaying frame")
         cv2.imshow("Video", img)
         if cv2.waitKey(42) and 0xFF == ord("q"):
             break
