@@ -28,6 +28,7 @@ def extractFrames(fileName, outputBuffer):
         outputBuffer.put(jpgAsText)
        
         success,image = vidcap.read()
+
         print('Reading frame {} {}'.format(count, success))
         count += 1
 

@@ -8,6 +8,11 @@ thread will read frames from a file, a second thread will take those frames
 and convert them to grayscale, and the third thread will display those
 frames. The threads will run concurrently.
 
+## Testing
+- main.py contains three functions that extract, convert to greyscale and display
+- main.py does not use DisplayFrames.py, ConvertToGreyscale.py, or ExtractFrames.py
+```python3 main.py```
+
 ## File List
 ### ExtractFrames.py
 Extracts a series of frames from the video contained in 'clip.mp4' and saves 
