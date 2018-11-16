@@ -11,6 +11,7 @@ frames. The threads will run concurrently.
 ## Testing
 - main.py contains three functions that extract, convert to greyscale and display
 - main.py does not use DisplayFrames.py, ConvertToGreyscale.py, or ExtractFrames.py
+- To run, enter: 
 ```python3 main.py```
 
 ## File List
